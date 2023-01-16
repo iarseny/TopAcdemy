@@ -1,10 +1,11 @@
 #include <iostream>
 #include "lib.cpp"
 #include "something.hpp"
+#include "lib3.hpp"
 
 int main() {
 
-    std::cout << minus(plus(8,9),5);
+    print(minus(plus(8,9),5));
 
     return 0;
 }
