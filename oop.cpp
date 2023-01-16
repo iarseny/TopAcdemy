@@ -1,6 +1,10 @@
 #include <iostream>
 #include <string>
 
+struct Data {
+
+};
+
 class Point {
     private:
     int x,y;
@@ -23,10 +27,19 @@ class Point {
 };
 
 class User {
-    std::string name;
-    int sum;
-    int year,month,year;
-    int id;
+    private:
+        std::string name;
+        int sum;
+        int year,month,year;
+        int id;
+        Data data;
+
+    public:
+        User() {}
+        User(const User &other) {}
+        User(std::string name,Data new_data) {
+            
+        }
     
 };
 
