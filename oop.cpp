@@ -7,11 +7,13 @@ struct Data {
 
 class Point {
     private:
-    static int prevID = 0;
+
     int x,y;
 
     public:
-    Point() : Point(5,5) {}
+    Point() : Point(5,5) {
+        static int prevID = 0;
+    }
 
     Point(int x,int y) {
         this->x = x;
