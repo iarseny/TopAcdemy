@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 class Point {
     private:
@@ -19,6 +20,14 @@ class Point {
     void setX(const int &t) {
         this->x = t;
     }
+};
+
+class User {
+    std::string name;
+    int sum;
+    int year,month,year;
+    int id;
+    
 };
 
 
