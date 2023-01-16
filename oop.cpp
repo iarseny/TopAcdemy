@@ -7,6 +7,7 @@ struct Data {
 
 class Point {
     private:
+    static int prevID = 0;
     int x,y;
 
     public:
@@ -38,7 +39,7 @@ class User {
         User() {}
         User(const User &other) {}
         User(std::string name,Data new_data) {
-            
+
         }
     
 };
