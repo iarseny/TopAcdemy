@@ -18,6 +18,10 @@ namespace classes {
             this->otchestvo = new std::string(o);
         }
 
+        void info() {
+            std::cout << *(this->name) << "  " << *(this->surname) << "  " << *(this->otchestvo) << std::endl;
+        }
+
         std::string get_name() {
             return *(this->name);
         }
@@ -30,59 +34,32 @@ namespace classes {
     };
 
     class Flat {
-
         int size = 0;
-        Person *list;
+
         std::string *name;
+        Person *array = new Person[size];
 
         public:
 
-        Flat(){
+        Flat() {}
 
-        }
-
-        void change(std::string new_string) {
-            delete name;
-            name = new std::string(new_string);
-
-        }
-
-        void print() {
-            for (int i = 0; i < size; i++) {
-                std::cout << this->list[i].get_name() << "  ";
-            }
-
-            std::cout << std::endl;
-        }
-
-        void add_person(Person person) {
-            Person *tmp = this->list;
-            delete [] this->list;
+        Flat(std::string name, Person &person) {
+            this->name = new std::string(name);
+            this->array = new Flat[1];
             this->size++;
-            this->list = new Person[this->size];
-            for (int i = 0; i < size - 1; i++) {
-                this->list[i] = tmp[i];
-            }
-
-            this->list[size - 1] = person;
-
+            array[this->size - 1] = flat;
         }
+
 
         std::string get_name() {
             return *(this->name);
         }
 
-        Flat(std::string name,Person person) {
-            this->name = new std::string(name);
-            this->list = new Person[1];
-            this->size++;
-            this->list[size - 1] = person;
+        ~Flat() {
+            delete this->name;
+            //delete [] this->array;
         }
 
-        ~Flat() {
-            delete [] this->list;
-            delete this->name;
-        }
     };
 
     class House {
@@ -126,8 +103,8 @@ namespace classes {
         }
 
         ~House() {
-            delete [] this->array;
-            delete this->name;
+            //delete [] this->array;
+            //delete this->name;
         }
 
     };
@@ -137,7 +114,15 @@ int main() {
 
     classes::Person person("Михаил","Петров","Иванович");
 
-    std::cout << person.get_name();
+    person.info();
+
+    std::cout << std::endl;
+
+    classes::Flat flat("flat1",person);
+
+    std::cout << flat.get_name();
+
+    std::cout << std::endl;
 
     return 0;
 }
