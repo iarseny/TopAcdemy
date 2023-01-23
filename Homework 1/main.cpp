@@ -45,9 +45,26 @@ namespace classes {
 
         Flat(std::string name, Person &person) {
             this->name = new std::string(name);
-            this->array = new Flat[1];
+            this->array = new Person[1];
             this->size++;
-            array[this->size - 1] = flat;
+            array[this->size - 1] = person;
+        }
+
+        void add_person(Person &person) {
+            this->size++;
+            Person *tmp = this->array;
+            this->array = new Person[this->size];
+            for (int i = 0; i < this->size - 1; i++) {
+                this->array[i] = tmp[i];
+            }
+
+            this->array[this->size - 1] = person;
+        }
+        void print_all() {
+            for (int i = 0; i < this->size; i++) {
+                std::cout << this->array[i].get_name() << std::endl;
+            }
+
         }
 
 
@@ -70,9 +87,11 @@ namespace classes {
 
         public:
 
-        House(std::string name,Flat flat) {
+        House() {}
+
+        House(std::string name,Flat &flat) {
             this->name = new std::string(name);
-            array = new Flat[1];
+            this->array = new Flat[1];
             this->size++;
             array[this->size - 1] = flat;
         }
@@ -89,22 +108,20 @@ namespace classes {
             return *(this->name);
         }
 
-        void add_flat(Flat flat) {
-            Flat *tmp = this->array;
-            delete [] this->array;
+        void add_flat(Flat &flat) {
             this->size++;
+            Flat *tmp = this->array;
             this->array = new Flat[this->size];
-            for (int i = 0; i < size - 1; i++) {
+            for (int i = 0; i < this->size - 1; i++) {
                 this->array[i] = tmp[i];
             }
 
-            this->array[size - 1] = flat;
+            this->array[this->size - 1] = flat;
 
         }
 
         ~House() {
-            //delete [] this->array;
-            //delete this->name;
+            delete this->name;
         }
 
     };
@@ -123,6 +140,10 @@ int main() {
     std::cout << flat.get_name();
 
     std::cout << std::endl;
+
+    classes::House house("house1",flat);
+
+    std::cout << house.get_name();
 
     return 0;
 }
