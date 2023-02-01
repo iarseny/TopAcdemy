@@ -26,7 +26,7 @@ class Matrix {
 
             if (typeid(this->matrix).name() == "int") {
 
-                srand(time(NULL))
+                srand(time(NULL));
                 for (int i = 0; i < n; i++) {
                     this->matrix[i] = rand() % 10;
                 }
@@ -37,6 +37,30 @@ class Matrix {
     Matrix &operator+(int g) {
         for (int i = 0; i < this->n; i++) {
             this->matrix[i] += g;
+        }
+
+        return *this;
+    }
+
+    Matrix &operator-(int g) {
+        for (int i = 0; i < this->n; i++) {
+            this->matrix[i] -= g;
+        }
+
+        return *this;
+    }
+
+    Matrix &operator*(int g) {
+        for (int i = 0; i < this->n; i++) {
+            this->matrix[i] *= g;
+        }
+
+        return *this;
+    }
+
+    Matrix &operator/(int g) {
+        for (int i = 0; i < this->n; i++) {
+            this->matrix[i] /= g;
         }
 
         return *this;
@@ -56,7 +80,7 @@ class Matrix {
 
 
 int main() {
-    Matrix matrix;
+    Matrix<int> matrix;
 
     matrix.show();
 
