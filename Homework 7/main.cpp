@@ -26,7 +26,7 @@ class Matrix {
 
             if (typeid(this->matrix).name() == "int") {
 
-                strand(time(NULL))
+                srand(time(NULL))
                 for (int i = 0; i < n; i++) {
                     this->matrix[i] = rand() % 10;
                 }
@@ -44,7 +44,7 @@ class Matrix {
 
     void show() {
         for (int i = 0; i < this->n; i++) {
-            std::cout << 
+            std::cout << this->matrix[i] << "  ";
         }
     }
 
@@ -56,6 +56,9 @@ class Matrix {
 
 
 int main() {
+    Matrix matrix;
+
+    matrix.show();
 
     return 0;
 }
