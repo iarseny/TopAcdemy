@@ -1,12 +1,6 @@
-
-#include <stdlib.h>
-// Нам понадобится функция qsort
 #include <iostream>
-
-//Для qsort
-int bigger (const void * a, const void * b) {
-    return ( *(int*)a - *(int*)b );
-}
+#include <algorithm>
+#include <vector>
 
 class Array {
     int *array;
@@ -45,22 +39,29 @@ class Array {
         return res;
     }
 
-    void sort() {
-        qsort(this->array,8,sizeof(int),bigger);
+    void sorting() {
+        std::vector<int> vec(&(this->array[0]),&(this->array[this->size]));
+
+        sort(vec.begin(), vec.end());
+
+        for (int i = 0; i < this->size; i++) {
+            this->array[i] = vec[i];
+        }
+
     }
 
     int search(int k) {
         bool flag = false;
-        int l = 0; // левая граница
-        int r = this->size - 1; // правая граница
+        int l = 0;
+        int r = this->size - 1;
         int mid;
         int key = k;
  
         while ((l <= r) && (flag != true)) {
-            mid = (l + r) / 2; // считываем срединный индекс отрезка [l,r]
+            mid = (l + r) / 2;
     
-            if (this->array[mid] == key) flag = true; //проверяем ключ со серединным элементом
-            if (this->array[mid] > key) r = mid - 1; // проверяем, какую часть нужно отбросить
+            if (this->array[mid] == key) flag = true;
+            if (this->array[mid] > key) r = mid - 1;
             else l = mid + 1;
         }
 
@@ -74,11 +75,11 @@ class Array {
 
 int main() {
 
-    int array[] = {1,2,4,5};
+    int array[] = {2,1,4,5};
 
     Array arr(array,4);
 
-    //arr.sort();
+    arr.sorting();
 
     arr.show();
 
