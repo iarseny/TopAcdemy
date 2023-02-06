@@ -23,17 +23,48 @@ int main() {
 
     stream_read.close();
 
-    char glassnie[10];
-
     int n = std::count(main_string.begin(), main_string.end(), '\n');
 
     int size = main_string.length() - n;
 
     n--;
 
-    std::cout << size;
+    int glassnie_count = 0;
+    glassnie_count += std::count(main_string.begin(), main_string.end(), 'a');
+    glassnie_count += std::count(main_string.begin(), main_string.end(), 'e');
+    glassnie_count += std::count(main_string.begin(), main_string.end(), 'i');
+    glassnie_count += std::count(main_string.begin(), main_string.end(), 'o');
+    glassnie_count += std::count(main_string.begin(), main_string.end(), 'u');
+    glassnie_count += std::count(main_string.begin(), main_string.end(), 'y');
 
-    std::cout << n;
+
+
+    int sogl_count = 0;
+
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+    sogl_count += std::count(main_string.begin(), main_string.end(), 'a');
+
+
+    std::cout << glassnie_count;
 
     return 0;
 }
