@@ -23,6 +23,8 @@ int main() {
 
     stream_read.close();
 
+    char glassnie[10];
+
     int n = std::count(main_string.begin(), main_string.end(), '\n');
 
     int size = main_string.length() - n;
