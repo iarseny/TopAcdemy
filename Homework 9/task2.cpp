@@ -84,5 +84,7 @@ int main() {
 
     str << answer_string;
 
+    str.close();
+
     return 0;
 }
