@@ -1,53 +1,86 @@
 #include <iostream>
 
 template<typename T>
-class Task {
-    struct Lists {
-        Lists *next;
+class List
+{
+    struct Node {
         T val;
+        Node *next;
     };
 
-    Lists *head;
+    Node *head = nullptr;
 
-    public:
+public:
+    List() {}
 
-    Task() {
-        this->head = new Lists();
-    }
+    void AddToTail(T d)
+    {
+        if(head == nullptr)
+            head = new Node{d,nullptr};
+        else
+        {
+            Node *tmp = head;
 
-    void print() {
-        Lists *tmp = this->head;
-        while (tmp->next != nullptr) {
-            std::cout << tmp->val << std::endl;
-            tmp = tmp->next;
+            while(tmp->next != nullptr)
+                tmp = tmp->next;
+
+            tmp->next = new Node{d,nullptr};
         }
     }
 
     void AddToHead(T el) {
-        Lists *tmp = this->head;
-        Lists *tmp2 = new Lists();
-        tmp2->val = el;
+        Node *tmp = new Node{el,head};
+        this->head = tmp;
 
-        tmp2->next = tmp;
-
-        this->head = tmp2;
     }
 
-    void AddToTail
-
-    ~Task() {
-        delete [] this->head;
+    void DeleteFromHead() {
+        this->head = this->head->next;
     }
 
+    void DeleteAll() {
+        this->head = nullptr;
+    }
+
+    void DeleteTail() {
+        Node *last = this->head;
+
+        while (last->next->next != nullptr) {
+            last = last->next;
+        }
+
+        last->next = nullptr;
+    }
+
+    void Show()
+    {
+        Node *current = head;
+
+        while(current != nullptr)
+        {
+            std::cout << current->val << std::endl;
+            current = current->next;
+        }
+    }
 };
 
-int main() {
+int main()
+{
+    List<int> list;
 
-    Task<int> task;
+    list.AddToTail(5);
+    list.AddToTail(11);
 
-    task.AddToHead(10);
+    list.AddToHead(8);
+    list.AddToHead(99);
 
-    task.print();
+    list.DeleteFromHead();
+
+    list.DeleteTail();
+
+    list.Show();
+
+    list.DeleteAll();
 
     return 0;
 }
