@@ -15,7 +15,7 @@ public:
 
     void AddToTail(T d)
     {
-        if(head == nullptr)
+        if (head == nullptr)
             head = new Node{d,nullptr};
         else
         {
