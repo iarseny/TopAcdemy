@@ -1,5 +1,7 @@
 #include <iostream>
 
+//Похожее задание, но нужно ещё проверить 2 массив)
+
 class Task {
     int *array1;
     int *array2;
@@ -26,7 +28,7 @@ class Task {
 
     }
 
-    int get_size() {
+    int get_size1() {
         int size = 0;
         for (int i = 0; i < this->size1; i++) {
             bool in_array = false;
@@ -43,8 +45,44 @@ class Task {
         return size;
     }
 
+    int get_size2() {
+        int size = 0;
+        for (int i = 0; i < this->size2; i++) {
+            bool in_array = false;
+            for (int j = 0; j < this->size1; j++) {
+                if (this->array2[i] == this->array1[j]) {
+                    in_array = true;
+                }
+            }
+            if (!in_array) {
+                size++;
+            }
+        }
+
+        return size;
+    }
+
+    void print(int *arr, int size) {
+        for (int i = 0; i < size; i++) {
+            std::cout << arr[i] << "\n";
+        }
+    }
+
     void fill(int *array) {
         int iter = 0;
+        for (int i = 0; i < this->size2; i++) {
+            bool in_array = false;
+            for (int j = 0; j < this->size1; j++) {
+                if (this->array2[i] == this->array1[j]) {
+                    in_array = true;
+                }
+            }
+            if (!in_array) {
+                array[iter] = this->array2[i];
+                iter++;
+            }
+        }
+
         for (int i = 0; i < this->size1; i++) {
             bool in_array = false;
             for (int j = 0; j < this->size2; j++) {
@@ -52,18 +90,13 @@ class Task {
                     in_array = true;
                 }
             }
-            
             if (!in_array) {
                 array[iter] = this->array1[i];
                 iter++;
             }
         }
-    }
 
-    void print(int *arr, int size) {
-        for (int i = 0; i < size; i++) {
-            std::cout << arr[i] << "\n";
-        }
+
     }
 
     ~Task() {
@@ -74,10 +107,9 @@ class Task {
 };
 
 int main() {
-
     Task task;
 
-    int new_size = task.get_size();
+    int new_size = task.get_size1() + task.get_size2();
 
     int *new_array = new int[new_size];
 
@@ -87,7 +119,6 @@ int main() {
 
     task.print(new_array, new_size);
 
-    delete [] new_array;
 
-    return 0;
+    delete [] new_array;
 }
